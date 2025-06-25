@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillCraft Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="skillcraft_logo.png" class="logo" alt="SkillCraft Logo">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#projects">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="navbar-search">
+            <input type="text" placeholder="Search here...">
+            <button>Search</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to SkillCraft Projects</h1>
+            <p>Explore hands-on tech projects, learn real-world skills, and build your future with confidence.</p>
+            <a href="#projects" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Projects Info Section -->
+    <section id="projects" class="info-section">
+        <h2>About SkillCraft Projects</h2>
+        <p>At SkillCraft, we focus on hands-on, real-world tech projects designed to teach, challenge, and empower learners of all levels. From frontend development to full-stack applications, each project builds practical skills and encourages creative problem-solving.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <form class="contact-form" onsubmit="return handleContactSubmit(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+            <p id="form-message" class="form-message"></p>
+        </form>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            document.getElementById('form-message').textContent = "Thank you! We'll get back to you soon.";
+            event.target.reset();
+            return false;
+        }
+    </script>
+</body>
+</html>
