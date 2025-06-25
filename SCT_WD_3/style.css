@@ -1,0 +1,308 @@
+* {
+    color: #4A4063;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.3s ease-in-out;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #F6F0FA;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.game-container {
+    background-color: #F4E9FF;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 280px;
+    text-align: center;
+    border: 2px solid #D5C1E8;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: #A974BF;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.mode-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode-button {
+    background-color: #E8DDF5;
+    color: #4A4063;
+    border: 2px solid #D5C1E8;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.mode-button.selected {
+    background-color: #C8A2C8;
+    border-color: #D5C1E8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(200, 162, 200, 0.4);
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.score-box {
+    background-color: #EFE1FA;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 1px solid #D5C1E8;
+}
+
+.score-box span {
+    color: #9D79B5;
+    font-size: 1.2rem;
+}
+
+.turn-container {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#game-status {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.turn-boxes {
+    width: 150px;
+    height: 40px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    border: 2px solid #D5C1E8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.turn-boxes .turn-box {
+    font-size: 1.4rem;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #C8A2C8;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 220px;
+    width: 220px;
+    margin: 15px auto;
+    border: 3px solid #D5C1E8;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.box {
+    cursor: pointer;
+    font-size: 3.2rem;
+    font-weight: 700;
+    border: 1px solid rgba(213, 193, 232, 0.4);
+    background-color: #FFFFFF;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.box:hover:empty {
+    background-color: #F4E0FF;
+    transform: scale(1.05);
+    box-shadow: 0 0 14px rgba(153, 111, 209, 0.7);
+}
+
+.box.x-marker {
+    color: #B47EB3;
+    animation: popX 0.2s ease-out;
+}
+
+.box.o-marker {
+    color: #6E4D8A;
+    animation: popO 0.2s ease-out;
+}
+
+@keyframes popX {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes popO {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.box.win {
+    background-color: #E0CFF9 !important;
+    color: #4A4063 !important;
+    animation: winPulse 1s infinite alternate;
+}
+
+@keyframes winPulse {
+    from { box-shadow: 0 0 10px #D5C1E8; }
+    to { box-shadow: 0 0 5px #C8A2C8; }
+}
+
+.control-button {
+    background-color: #C8A2C8;
+    padding: 10px 24px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 5px 12px rgba(155, 89, 182, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.control-button:hover {
+    background-color: #B47EB3;
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+    transform: translateY(-2px);
+}
+
+.control-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(155, 89, 182, 0.2);
+}
+
+.message-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-content {
+    background-color: #F4E9FF;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 320px;
+    width: 85%;
+    border: 2px solid #D5C1E8;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#message-text {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.ok-button {
+    background-color: #D5C1E8;
+    box-shadow: 0 4px 12px rgba(186, 225, 255, 0.3);
+}
+
+.ok-button:hover {
+    background-color: #C8A2C8;
+    box-shadow: 0 4px 12px rgba(191, 162, 255, 0.4);
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .main-grid {
+        height: 200px;
+        width: 200px;
+    }
+
+    .box {
+        font-size: 2.8rem;
+    }
+
+    .mode-button, .control-button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .score-board, .turn-container {
+        margin-bottom: 15px;
+    }
+
+    .score-box, .turn-box {
+        font-size: 0.95rem;
+    }
+
+    #game-status {
+        font-size: 1.1rem;
+    }
+
+    .message-content {
+        padding: 20px;
+    }
+
+    #message-text {
+        font-size: 1.2rem;
+    }
+}
